@@ -9,10 +9,10 @@
 // 
 // Book class 
 class Book {
-    constructor(title,author,ispn){
+    constructor(title,author,ispm){
         this.title = title;
         this.author = author;
-        this.ispn = ispn;
+        this.ispm = ispm;
     };
 };
 // ui class 
@@ -48,6 +48,19 @@ class Ui{
     }
 };
 
+// get the bookform
+document.querySelector('.Book-form').addEventListener('submit',e=>{
+    e.preventDefault();
+    const title = document.querySelector('#title').value;
+    const author = document.querySelector('#author').value;
+    const isbm = document.querySelector('#isbm').value;
+    // initiate book
+    const book = new Book(title,author,isbm)
+
+    // add book to ui
+    Ui.addBookList(book)
+
+})
 
 // store clases : local store 
 
