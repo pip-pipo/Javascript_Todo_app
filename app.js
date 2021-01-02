@@ -45,6 +45,9 @@ class Ui {
         <td ><a href="#" class="btn btn-danger delete">x</a></td>
         `;
         Book__list.appendChild(tr);
+         document.querySelector('#title').value = '';
+         document.querySelector('#author').value = '';
+         document.querySelector('#isbm').value ='';
     }
     static deleteBook(e){
         if(e.classList.contains('delete')){
@@ -61,13 +64,19 @@ document.querySelector('.Book-form').addEventListener('submit', e => {
     const title = document.querySelector('#title').value;
     const author = document.querySelector('#author').value;
     const isbm = document.querySelector('#isbm').value;
+    
+    
+    if(title === '' || author === '' || isbm===''){
+        alert('Please fill in all fields')
+    }else{
     // initiate book
     const book = new Book(title, author, isbm)
 
     // add book to ui
     Ui.addBookList(book)
     // clear todo
-    Ui.clearField();
+    // Ui.clearField();
+    }
 
 });
 
