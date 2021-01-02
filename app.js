@@ -9,25 +9,25 @@
 // 
 // Book class 
 class Book {
-    constructor(title,author,ispm){
+    constructor(title, author, ispm) {
         this.title = title;
         this.author = author;
         this.ispm = ispm;
     };
 };
 // ui class 
-class Ui{
-    static Display__book(){
+class Ui {
+    static Display__book() {
         const StoreBookdemo = [
             {
-                title:'Book one',
-                author:'imran',
-                ispm :'Mit'
+                title: 'Book one',
+                author: 'imran',
+                ispm: 'Mit'
             },
             {
-                title:'Book Two',
-                author:'Morsalin',
-                ispm :'3942'
+                title: 'Book Two',
+                author: 'Morsalin',
+                ispm: '3942'
             }
         ];
         const newStroeDemo = StoreBookdemo;
@@ -35,10 +35,10 @@ class Ui{
             Ui.addBookList(book)
         });
     };
-   static addBookList(book){
+    static addBookList(book) {
         const Book__list = document.querySelector('#book-list');
         const tr = document.createElement('tr');
-        tr.innerHTML =`
+        tr.innerHTML = `
         <td>${book.title}</td>
         <td>${book.author}</td>
         <td>${book.ispm}</td>
@@ -46,23 +46,39 @@ class Ui{
         `;
         Book__list.appendChild(tr);
     }
+    static deleteBook(e){
+        if(e.classList.contains('delete')){
+            e.parentElement.parentElement.remove();
+        }else{
+            e.parentElement.parentElement.style.display ='';
+        }
+    }
 };
 
 // get the bookform
-document.querySelector('.Book-form').addEventListener('submit',e=>{
+document.querySelector('.Book-form').addEventListener('submit', e => {
     e.preventDefault();
     const title = document.querySelector('#title').value;
     const author = document.querySelector('#author').value;
     const isbm = document.querySelector('#isbm').value;
     // initiate book
-    const book = new Book(title,author,isbm)
+    const book = new Book(title, author, isbm)
 
     // add book to ui
     Ui.addBookList(book)
+    // clear todo
+    Ui.clearField();
 
+});
+
+// send e.target data into deleteBook
+document.querySelector('#book-list').addEventListener('click',(e)=>{
+    Ui.deleteBook(e.target);
 })
 
-// store clases : local store 
+
+
+
 
 // Event display 
 document.addEventListener('DOMContentLoaded', Ui.Display__book);
