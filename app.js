@@ -90,8 +90,7 @@ document.querySelector('.Book-form').addEventListener('submit', e => {
 
         // add book to ui
         Ui.addBookList(book)
-        // clear todo
-        // Ui.clearField();
+        
     }
 
 });
@@ -100,10 +99,6 @@ document.querySelector('.Book-form').addEventListener('submit', e => {
 document.querySelector('#book-list').addEventListener('click', (e) => {
     Ui.deleteBook(e.target);
 })
-
-
-
-
 
 // Event display 
 document.addEventListener('DOMContentLoaded', Ui.Display__book);
